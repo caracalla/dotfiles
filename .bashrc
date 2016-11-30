@@ -1,8 +1,6 @@
 alias ls='ls -GhF1'
 alias ll='ls -lhAF'
 alias skill='kill -9'
-# alias prod='shdl rails console -e production'
-# alias staging='shdl rails console'
 
 source ~/.git-completion.bash
 source ~/.git-prompt.sh
@@ -33,9 +31,6 @@ export PS1='\n\[\e[37m\][\d - \t] \[\e[32m\]\w\n \[\e[31m\]\u\[\e[37m\]@\[\e[36m
 export CLICOLOR=1
 export LSCOLORS=gxFxBxDxCxegedabagacad
 # export EDITOR=vim
-export EDITOR='subl'
-export SHUDDLE_MESSAGING_HMAC_KEY=dLj0d6g4dsK5x7ldt4l8SjYXiRo3m3+v+u49Ljx22YE=
+# export EDITOR='subl'
 
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
