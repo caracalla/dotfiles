@@ -1,4 +1,6 @@
 alias ls="ls -GhF1"
+# BSD version: alias ls="ls -GhF1"
+# Linux version: alias ls="ls --color -hF1"
 alias ll="ls -lhAF"
 alias skill="kill -9"
 
@@ -26,7 +28,7 @@ export PS1="\n$c_lightgray[$thedate - $thetime] $c_green$directory\n $c_red$user
 export EDITOR=vim
 export CLICOLOR=1
 export LSCOLORS=gxFxBxDxCxegedabagacad
-# BSD version: gxFxBxDxCxegedabagacad
-# Linux version: di=36:ln=1;35:so=1;31:pi=1;33:ex=1;32:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43
+# BSD version: export LSCOLORS=gxFxBxDxCxegedabagacad
+# Linux version: export LS_COLORS="di=36:ln=1;35:so=1;31:pi=1;33:ex=1;32:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
 
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
