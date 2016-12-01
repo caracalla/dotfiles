@@ -26,15 +26,13 @@ c_lightgray="\[\e[37m\]"
 c_cyan="\[\e[36m\]"
 
 # PS1 helpers
-
 git_ps1='$(__git_ps1 " (%s)")'
-date_and_time='$c_lightgray[\d - \t]'
-directory='$c_green\w'
-username_and_hostname='$c_red\u$c_lightgray@$c_cyan\h'
-git_status='$c_reset$git_ps1'
-prompt_symbol='$c_cyan ∫ $c_reset'
+date_and_time="$c_lightgray[\d - \t]"
+directory="$c_green\w"
+username_and_hostname="$c_red\u$c_lightgray@$c_cyan\h"
+prompt_symbol="$c_cyan ∫ $c_reset"
 
-export PS1="\n$date_and_time $directory\n $username_and_hostname:$gitstatus$prompt_symbol"
+export PS1="\n$date_and_time $directory\n $username_and_hostname:$c_reset$git_ps1$prompt_symbol"
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
