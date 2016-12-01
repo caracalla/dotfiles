@@ -18,14 +18,6 @@ alias loc='ssh root@local.upcounsel.com'
 source ~/.git-completion.bash
 source ~/.git-prompt.sh
 
-# PS1 helpers
-username="\u"
-thetime="\t"
-thedate="\d"
-hostname="\h"
-directory="\w"
-gitps1='$(__git_ps1 " (%s)")'
-
 # PS1 Colors
 c_reset="\[\e[0m\]" #\[\e[m\]
 c_red="\[\e[0;31m\]"
@@ -33,14 +25,21 @@ c_green="\[\e[0;32m\]"
 c_lightgray="\[\e[37m\]"
 c_cyan="\[\e[36m\]"
 
+# PS1 helpers
+
+git_ps1='$(__git_ps1 " (%s)")'
+date_and_time="$c_lightgray[\d - \t]"
+directory="$c_green\w"
+username_and_hostname="$c_red\u$c_lightgray@$c_cyan\h"
+git_status="$c_reset$git_ps1"
+prompt_symbol="$c_cyan ∫ $c_reset"
+
+export PS1="\n$date_and_time $directory\n $username_and_hostname:$gitstatus$prompt_symbol"
+
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM="auto"
-
-# can't use single quotes around (%s) in linux??
-export PS1="\n$c_lightgray[$thedate - $thetime] $c_green$directory\n $c_red$username$c_lightgray@$c_cyan$hostname:$c_reset$gitps1$c_cyan ∫ $c_reset"
-
 export EDITOR=vim
 export CLICOLOR=1
 
