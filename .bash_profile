@@ -3,8 +3,8 @@ if [ -r ~/.profile ]; then
 fi
 
 # Aliases and scripts that can't be pushed to a repo
-if [ -r ~/.secrets ]; then
-	. ~/.secrets;
+if [ -r ~/.bash_secrets ]; then
+	. ~/.bash_secrets;
 fi
 
 case "$-" in *i*)
