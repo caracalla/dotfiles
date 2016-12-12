@@ -1,3 +1,5 @@
+# Determine if platform is Linux or macOS (Darwin) and colorize shell accordingly
+
 platform='unknown'
 unamestr=`uname`
 
@@ -11,9 +13,13 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
    export LSCOLORS=gxFxBxDxCxegedabagacad
 fi
 
+# Aliases
+
 alias ll="ls -lhAF"
 alias skill="kill -9"
 alias loc='ssh root@local.upcounsel.com'
+
+# PS1 configuration
 
 source ~/.git-completion.bash
 source ~/.git-prompt.sh
@@ -40,5 +46,3 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM="auto"
 export EDITOR=vim
 export CLICOLOR=1
-
-[[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile

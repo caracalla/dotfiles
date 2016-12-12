@@ -6,3 +6,4 @@ ln -s "$(pwd)"/.gitconfig ~/.gitconfig
 ln -s "$(pwd)"/.gitignore ~/.gitignore
 ln -s "$(pwd)"/.profile ~/.profile
 ln -s "$(pwd)"/.vimrc ~/.vimrc
+ln -s "$(pwd)"/.pryrc ~/.pryrc
