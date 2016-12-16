@@ -25,21 +25,27 @@ source ~/.git-prompt.sh
 
 # PS1 Colors
 c_reset="\[\e[0m\]" #\[\e[m\]
+c_black="\[\e[0;30m\]"
 c_red="\[\e[0;31m\]"
 c_green="\[\e[0;32m\]"
-c_lightgray="\[\e[37m\]"
-c_cyan="\[\e[36m\]"
+c_yellow="\[\e[0;33m\]"
+c_blue="\[\e[0;34m\]"
+c_magenta="\[\e[0;35m\]"
+c_cyan="\[\e[0;36m\]"
+c_lightgray="\[\e[0;37m\]"
+c_default="\[\e[0;39m\]" #???
 
 # PS1 helpers
 git_ps1=${c_reset}'$(__git_ps1 " (%s)")'
 date_and_time="${c_lightgray}[\d - \t]"
 directory="${c_green}\w"
-username_and_hostname="${c_red}\u${c_lightgray}@${c_cyan}\h"
 
 if [[ $platform == 'Linux' ]]; then
-  prompt_symbol="${c_cyan} » ${c_reset}"
+  prompt_symbol="${c_magenta} » ${c_reset}"
+  username_and_hostname="${c_red}\u${c_lightgray}@${c_magenta}\h"
 else
   prompt_symbol="${c_cyan} ∫ ${c_reset}"
+  username_and_hostname="${c_red}\u${c_lightgray}@${c_cyan}\h"
 fi
 
 export PS1="\n${date_and_time} ${directory}\n ${username_and_hostname}:${git_ps1}${prompt_symbol}"
