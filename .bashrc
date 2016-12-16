@@ -35,7 +35,12 @@ git_ps1=${c_reset}'$(__git_ps1 " (%s)")'
 date_and_time="${c_lightgray}[\d - \t]"
 directory="${c_green}\w"
 username_and_hostname="${c_red}\u${c_lightgray}@${c_cyan}\h"
-prompt_symbol="${c_cyan} ∫ ${c_reset}"
+
+if [[ $platform == 'Linux' ]]; then
+  prompt_symbol="${c_cyan} » ${c_reset}"
+else
+  prompt_symbol="${c_cyan} ∫ ${c_reset}"
+fi
 
 export PS1="\n${date_and_time} ${directory}\n ${username_and_hostname}:${git_ps1}${prompt_symbol}"
 
