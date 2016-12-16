@@ -17,7 +17,6 @@ fi
 
 alias ll="ls -lhAF"
 alias skill="kill -9"
-alias loc='ssh root@local.upcounsel.com'
 
 # PS1 configuration
 
@@ -32,7 +31,7 @@ c_lightgray="\[\e[37m\]"
 c_cyan="\[\e[36m\]"
 
 # PS1 helpers
-git_ps1=${c_reset}$(__git_ps1 " (%s)")
+git_ps1=${c_reset}'$(__git_ps1 " (%s)")'
 date_and_time="${c_lightgray}[\d - \t]"
 directory="${c_green}\w"
 username_and_hostname="${c_red}\u${c_lightgray}@${c_cyan}\h"
