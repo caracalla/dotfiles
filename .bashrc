@@ -17,6 +17,7 @@ fi
 
 alias ll="ls -lhAF"
 alias skill="kill -9"
+alias resource="source ~/.bash_profile"
 
 # PS1 configuration
 
