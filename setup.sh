@@ -4,6 +4,5 @@ ln -s "$(pwd)"/.git-completion.bash ~/.git-completion.bash
 ln -s "$(pwd)"/.git-prompt.sh ~/.git-prompt.sh
 ln -s "$(pwd)"/.gitconfig ~/.gitconfig
 ln -s "$(pwd)"/.gitignore ~/.gitignore
-ln -s "$(pwd)"/.profile ~/.profile
 ln -s "$(pwd)"/.vimrc ~/.vimrc
 ln -s "$(pwd)"/.pryrc ~/.pryrc

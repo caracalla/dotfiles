@@ -2,7 +2,7 @@ if [ -r ~/.profile ]; then
 	. ~/.profile;
 fi
 
-# Aliases and scripts that can't be pushed to a repo
+# Aliases and scripts that can't be pushed to the dotfiles repo
 if [ -r ~/.bash_secrets ]; then
 	. ~/.bash_secrets;
 fi
