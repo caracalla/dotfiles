@@ -7,6 +7,8 @@ if [[ "$unamestr" == 'Linux' ]]; then
   platform='Linux'
   alias ls="ls --color -hF1"
   export LS_COLORS="di=36:ln=1;35:so=1;31:pi=1;33:ex=1;32:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
+
+  alias top="COLUMNS=200 top -c"
 elif [[ "$unamestr" == 'Darwin' ]]; then
   platform='macOS'
   alias ls="ls -GhF1"
@@ -57,3 +59,5 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM="auto"
 export EDITOR=vim
 export CLICOLOR=1
+
+export PATH="$HOME/.yarn/bin:$PATH"

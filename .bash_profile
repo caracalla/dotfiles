@@ -13,6 +13,11 @@ case "$-" in *i*)
 	fi;
 esac
 
+# Load rbenv
 if which rbenv > /dev/null; then
   eval "$(rbenv init -)";
 fi
+
+# Load nvm
+export NVM_DIR="/Users/kimo/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
