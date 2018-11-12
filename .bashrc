@@ -26,32 +26,44 @@ alias resource="source ~/.bash_profile"
 source ~/.git-completion.bash
 source ~/.git-prompt.sh
 
-# PS1 Colors
-c_reset="\[\e[0m\]" #\[\e[m\]
-c_black="\[\e[0;30m\]"
-c_red="\[\e[0;31m\]"
-c_green="\[\e[0;32m\]"
-c_yellow="\[\e[0;33m\]"
-c_blue="\[\e[0;34m\]"
-c_magenta="\[\e[0;35m\]"
-c_cyan="\[\e[0;36m\]"
-c_lightgray="\[\e[0;37m\]"
-c_default="\[\e[0;39m\]" #???
+PROMPT_COMMAND=__prompt_command
 
-# PS1 helpers
-git_ps1=${c_reset}'$(__git_ps1 " (%s)")'
-date_and_time="${c_lightgray}[\d - \t]"
-directory="${c_green}\w"
+__prompt_command() {
+  local EXIT="$?"
 
-if [[ $platform == 'Linux' ]]; then
-  prompt_symbol="${c_magenta} » ${c_reset}"
-  username_and_hostname="${c_red}\u${c_lightgray}@${c_magenta}\h"
-else
-  prompt_symbol="${c_cyan} ∫ ${c_reset}"
-  username_and_hostname="${c_red}\u${c_lightgray}@${c_cyan}\h"
-fi
+  # PS1 Colors
+  local c_reset="\[\e[0m\]" #\[\e[m\]
+  local c_black="\[\e[0;30m\]"
+  local c_red="\[\e[0;31m\]"
+  local c_green="\[\e[0;32m\]"
+  local c_yellow="\[\e[0;33m\]"
+  local c_blue="\[\e[0;34m\]"
+  local c_magenta="\[\e[0;35m\]"
+  local c_cyan="\[\e[0;36m\]"
+  local c_lightgray="\[\e[0;37m\]"
+  local c_default="\[\e[0;39m\]" #???
 
-export PS1="\n${date_and_time} ${directory}\n ${username_and_hostname}:${git_ps1}${prompt_symbol}"
+  local directory_color="${c_green}"
+
+  if [ $EXIT != 0 ]; then
+    directory_color="${c_red}"
+  fi
+
+  # PS1 helpers
+  local git_ps1=${c_reset}'$(__git_ps1 " (%s)")'
+  local date_and_time="${c_lightgray}[\d - \t]"
+  local directory="${directory_color}\w"
+
+  if [[ $platform == 'Linux' ]]; then
+    prompt_symbol="${c_magenta} » ${c_reset}"
+    username_and_hostname="${c_red}\u${c_lightgray}@${c_magenta}\h"
+  else
+    prompt_symbol="${c_cyan} ∫ ${c_reset}"
+    username_and_hostname="${c_red}\u${c_lightgray}@${c_cyan}\h"
+  fi
+
+  PS1="\n${date_and_time} ${directory}\n ${username_and_hostname}:${git_ps1}${prompt_symbol}"
+}
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
