@@ -3,7 +3,7 @@
 Run `setup.sh` in this directory to create symlinks to the relevant files in the current user's home directory. Some files, such as `.tmux.conf`, will not be symlinked, as they are platform dependent.
 
 ## TODO:
-
+* Have `setup.sh` move old files if they already exist (or something)
 * Allow `setup.sh` to determine which OS it's in and copy files accordingly.
 * Add a function/alias to ssh-add
 * Distinguish between root and non-root user

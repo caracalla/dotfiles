@@ -1,3 +1,5 @@
+# .bashrc
+
 # Determine if platform is Linux or macOS (Darwin) and colorize shell accordingly
 
 platform='unknown'
@@ -5,7 +7,7 @@ unamestr=`uname`
 
 if [[ "$unamestr" == 'Linux' ]]; then
   platform='Linux'
-  alias ls="ls --color -hF1"
+  alias ls="ls --color -CF1a"
   export LS_COLORS="di=36:ln=1;35:so=1;31:pi=1;33:ex=1;32:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
 
   alias top="COLUMNS=200 top -c"
@@ -15,11 +17,26 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
   export LSCOLORS=gxFxBxDxCxegedabagacad
 fi
 
+
+
 # Aliases
 
 alias ll="ls -lhAF"
 alias skill="kill -9"
 alias resource="source ~/.bash_profile"
+alias secrets="vim ~/.bash_secrets"
+
+greproc()
+{
+  if [ "${1}x" == "x" ]
+  then
+    echo "you gotta pass something in"
+  else
+    ps aux | grep -i "$1" | grep -v grep
+  fi
+}
+
+
 
 # PS1 configuration
 
@@ -65,11 +82,22 @@ __prompt_command() {
   PS1="\n${date_and_time} ${directory}\n ${username_and_hostname}:${git_ps1}${prompt_symbol}"
 }
 
+
+
+# Exports
+
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM="auto"
 export EDITOR=vim
 export CLICOLOR=1
+
+export HISTFILESIZE=-1
+export HISTSIZE=1000000
+export HISTCONTROL=ignoredups
+export HISTFILE=~/.bash_history_actual
+shopt -s histappend
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 export PATH="$HOME/.yarn/bin:$PATH"
