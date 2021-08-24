@@ -100,4 +100,13 @@ export HISTFILE=~/.bash_history_actual
 shopt -s histappend
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
+# some yarn stuff I guess?
 export PATH="$HOME/.yarn/bin:$PATH"
+
+# making macOS homebrew play nice with compilers
+if [[ "$platform" == 'macOS' ]]; then
+  brew_dir="/opt/homebrew"
+  export PATH="$brew_dir/bin:$PATH"
+  export CPATH="$brew_dir/include"
+  export LIBRARY_PATH="$brew_dir/lib"
+fi
