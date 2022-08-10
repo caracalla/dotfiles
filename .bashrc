@@ -26,6 +26,9 @@ alias skill="kill -9"
 alias resource="source ~/.bash_profile"
 alias secrets="vim ~/.bash_secrets"
 
+# git helpers
+alias undocommit="git reset HEAD~"
+
 greproc()
 {
   if [ "${1}x" == "x" ]
@@ -103,10 +106,16 @@ export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 # some yarn stuff I guess?
 export PATH="$HOME/.yarn/bin:$PATH"
 
-# making macOS homebrew play nice with compilers
+# making macOS homebrew play nice with C/C++ compilers
 if [[ "$platform" == 'macOS' ]]; then
   brew_dir="/opt/homebrew"
   export PATH="$brew_dir/bin:$PATH"
   export CPATH="$brew_dir/include"
   export LIBRARY_PATH="$brew_dir/lib"
+
+  # remap caps lock to escape
+  hidutil property --set '{"UserKeyMapping":
+      [{"HIDKeyboardModifierMappingSrc":0x700000039,
+        "HIDKeyboardModifierMappingDst":0x700000029}]
+  }'
 fi
