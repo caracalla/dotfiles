@@ -39,6 +39,9 @@ greproc() # list running processes matching the argument
   fi
 }
 
+# git helpers
+alias undocommit="git reset HEAD~"
+
 # special purpose
 alias ressh='eval `ssh-agent -s` && ssh-add'
 alias pq="psql --host=0.0.0.0 --port=5432 -U test"
@@ -119,3 +122,17 @@ export HISTSIZE=1000000
 export HISTCONTROL=ignoredups
 export HISTFILE=~/.bash_history_actual
 shopt -s histappend
+
+# making macOS homebrew play nice with C/C++ compilers
+if [[ "$platform" == 'macOS' ]]; then
+  brew_dir="/opt/homebrew"
+  export PATH="$brew_dir/bin:$PATH"
+  export CPATH="$brew_dir/include"
+  export LIBRARY_PATH="$brew_dir/lib"
+
+  # remap caps lock to escape
+  hidutil property --set '{"UserKeyMapping":
+      [{"HIDKeyboardModifierMappingSrc":0x700000039,
+        "HIDKeyboardModifierMappingDst":0x700000029}]
+  }'
+fi
