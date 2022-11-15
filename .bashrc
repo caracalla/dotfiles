@@ -20,19 +20,40 @@ fi
 
 
 # Aliases
-
+# general purpose
 alias ll="ls -lhAF"
 alias skill="kill -9"
 alias resource="source ~/.bash_profile"
 alias secrets="vim ~/.bash_secrets"
+alias rmnl="sed -e 's/\\\n/\n/g'"
+alias duff="diff --side-by-side --suppress-common-lines"
+alias mm="/Users/james/projects/move_mouse/move_mouse"
 
-greproc()
+greproc() # list running processes matching the argument
 {
   if [ "${1}x" == "x" ]
   then
     echo "you gotta pass something in"
   else
     ps aux | grep -i "$1" | grep -v grep
+  fi
+}
+
+# special purpose
+alias ressh='eval `ssh-agent -s` && ssh-add'
+alias pq="psql --host=0.0.0.0 --port=5432 -U test"
+
+## docker stuff
+alias deaddock="docker ps --filter status=exited"
+alias cleandock="docker rm \`docker ps --filter status=exited -q\`"
+
+docklog() # tail logs for a named container
+{
+  if [ "${1}x" == "x" ]
+  then
+    echo "must pass in docker container name"
+  else
+    docker logs -f -n 10 "$1" | rmnl | sed -e 's/\\\"/"/g' | sed -e 's/^{/\n{/g'
   fi
 }
 
@@ -98,6 +119,3 @@ export HISTSIZE=1000000
 export HISTCONTROL=ignoredups
 export HISTFILE=~/.bash_history_actual
 shopt -s histappend
-export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
-
-export PATH="$HOME/.yarn/bin:$PATH"
