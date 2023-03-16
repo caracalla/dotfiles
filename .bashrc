@@ -25,6 +25,7 @@ alias ll="ls -lhAF"
 alias skill="kill -9"
 alias resource="source ~/.bash_profile"
 alias secrets="vim ~/.bash_secrets"
+alias tostdout="2>&1"
 alias rmnl="sed -e 's/\\\n/\n/g'"
 alias duff="diff --side-by-side --suppress-common-lines"
 alias mm="/Users/james/projects/move_mouse/move_mouse"
@@ -41,10 +42,12 @@ greproc() # list running processes matching the argument
 
 # git helpers
 alias undocommit="git reset HEAD~"
+alias stashnpull="git stash && git pull && git stash pop"
 
 # special purpose
 alias ressh='eval `ssh-agent -s` && ssh-add'
 alias pq="psql --host=0.0.0.0 --port=5432 -U test"
+alias cb="cargo build"
 
 ## docker stuff
 alias deaddock="docker ps --filter status=exited"
@@ -57,6 +60,16 @@ docklog() # tail logs for a named container
     echo "must pass in docker container name"
   else
     docker logs -f -n 10 "$1" | rmnl | sed -e 's/\\\"/"/g' | sed -e 's/^{/\n{/g'
+  fi
+}
+
+docksh()
+{
+  if [ "${1}x" == "x" ]
+  then
+    echo "must pass in docker container name"
+  else
+    docker exec -it "$1" /bin/sh
   fi
 }
 
