@@ -43,6 +43,13 @@ greproc() # list running processes matching the argument
 # git helpers
 alias undocommit="git reset HEAD~"
 alias stashnpull="git stash && git pull && git stash pop"
+alias currbranch="git rev-parse --abbrev-ref HEAD"
+
+pullmaster()
+{
+  branch_name=`currbranch`
+  git stash && git checkout master && git pull && git checkout "${branch_name}"
+}
 
 # special purpose
 alias ressh='eval `ssh-agent -s` && ssh-add'
