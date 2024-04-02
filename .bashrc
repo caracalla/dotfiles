@@ -123,7 +123,7 @@ __prompt_command() {
     if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
       username_color="${c_blue}"
     fi
-    username_and_hostname="${c_red}\u${c_lightgray}@${c_magenta}\h"
+    username_and_hostname="${username_color}\u${c_lightgray}@${c_magenta}\h"
   else
     prompt_symbol="${c_cyan} ∫ ${c_reset}"
     username_and_hostname="${username_color}\u${c_lightgray}@${c_cyan}\h"
