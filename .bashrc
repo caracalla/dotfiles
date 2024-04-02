@@ -29,6 +29,7 @@ alias tostdout="2>&1"
 alias rmnl="sed -e 's/\\\n/\n/g'"
 alias duff="diff --side-by-side --suppress-common-lines"
 alias mm="/Users/james/projects/move_mouse/move_mouse"
+alias servedir="python3 -m http.server 8081"
 
 greproc() # list running processes matching the argument
 {
@@ -115,12 +116,17 @@ __prompt_command() {
   local date_and_time="${c_lightgray}[\d - \t]"
   local directory="${directory_color}\w"
 
+  local username_color="${c_blue}"
+
   if [[ $platform == 'Linux' ]]; then
     prompt_symbol="${c_magenta} » ${c_reset}"
+    if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+      username_color="${c_blue}"
+    fi
     username_and_hostname="${c_red}\u${c_lightgray}@${c_magenta}\h"
   else
     prompt_symbol="${c_cyan} ∫ ${c_reset}"
-    username_and_hostname="${c_red}\u${c_lightgray}@${c_cyan}\h"
+    username_and_hostname="${username_color}\u${c_lightgray}@${c_cyan}\h"
   fi
 
   PS1="\n${date_and_time} ${directory}\n ${username_and_hostname}:${git_ps1}${prompt_symbol}"

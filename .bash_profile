@@ -16,7 +16,7 @@ if [ -r ~/.bash_secrets ]; then
 fi
 
 # Load rbenv
-if which rbenv > /dev/null; then
+if which rbenv 2> /dev/null; then
   eval "$(rbenv init -)";
 fi
 
