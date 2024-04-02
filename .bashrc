@@ -116,7 +116,7 @@ __prompt_command() {
   local date_and_time="${c_lightgray}[\d - \t]"
   local directory="${directory_color}\w"
 
-  local username_color="${c_blue}"
+  local username_color="${c_red}"
 
   if [[ $platform == 'Linux' ]]; then
     prompt_symbol="${c_magenta} » ${c_reset}"
