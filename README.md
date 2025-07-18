@@ -7,7 +7,7 @@ Symlinks all the relevant config files to the current user's home directory.  On
 `bash setup.sh`
 
 ## TODO:
-* Have `setup.sh` move old files if they already exist (or something)
+* Remove the legacy tmux configs in /darwin and /linux
 * Add a function/alias to ssh-add
 * Distinguish between root and non-root user
 * Add `zsh` support (or figure out how to make macOS stop complaining about it)

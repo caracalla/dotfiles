@@ -1,5 +1,5 @@
 # move old configs
-old_configs_dir="$HOME/old_configs"
+old_configs_dir="$HOME/.old_configs"
 
 mkdir -p "$old_configs_dir"
 
@@ -27,11 +27,11 @@ ln -s "$curdir/.vimrc" ~/.vimrc
 ln -s "$curdir/.pryrc" ~/.pryrc
 
 
-# create symlink for tmux config, based on current OS
-unamestr=`uname`
-
-if [[ "$unamestr" == 'Linux' ]]; then
-  ln -s "$curdir/linux/.tmux.conf" ~/.tmux.conf
-elif [[ "$unamestr" == 'Darwin' ]]; then
-  ln -s "$curdir/darwin/.tmux.conf" ~/.tmux.conf
+# TODO: This is the wrong idea.  What I want is to use one tmux config when
+# logged in through SSH, and another when not.  Typically, it's always one or
+# the other, but for some hosts (like my rpi) it can be both
+if [[ -n "$SSH_CONNECTION" ]]; then
+  ln -s "$curdir/tmux/remote.tmux.conf" ~/.tmux.conf
+else
+  ln -s "$curdir/tmux/local.tmux.conf" ~/.tmux.conf
 fi

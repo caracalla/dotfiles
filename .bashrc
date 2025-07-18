@@ -25,10 +25,11 @@ alias ll="ls -lhAF"
 alias skill="kill -9"
 alias resource="source ~/.bash_profile"
 alias secrets="vim ~/.bash_secrets"
-alias tostdout="2>&1"
+alias tostdout="2>&1" # there's a better way to do this: |& I think
+alias ts="date +%s"
 alias rmnl="sed -e 's/\\\n/\n/g'"
 alias duff="diff --side-by-side --suppress-common-lines"
-alias mm="/Users/james/projects/move_mouse/move_mouse"
+alias calc="bc -l"
 alias servedir="python3 -m http.server 8081"
 
 greproc() # list running processes matching the argument
@@ -118,7 +119,7 @@ __prompt_command() {
 
   local username_color="${c_red}"
 
-  if [[ $platform == 'Linux' ]]; then
+  if [[ -n "$SSH_CONNECTION" ]]; then
     prompt_symbol="${c_magenta} » ${c_reset}"
     if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
       username_color="${c_blue}"
@@ -128,6 +129,9 @@ __prompt_command() {
     prompt_symbol="${c_cyan} ∫ ${c_reset}"
     username_and_hostname="${username_color}\u${c_lightgray}@${c_cyan}\h"
   fi
+
+  prompt_symbol="${c_cyan} ∫ ${c_reset}"
+  username_and_hostname="${username_color}\u${c_lightgray}@${c_cyan}\h"
 
   PS1="\n${date_and_time} ${directory}\n ${username_and_hostname}:${git_ps1}${prompt_symbol}"
 }
